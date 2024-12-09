@@ -27,4 +27,17 @@ async def ask_phone(message:types.Message):
     keyboard = types.ReplyKeyboardMarkup(keyboard=button,one_time_keyboard=True,resize_keyboard=True)
     await message.answer(f"Iltimos telefon raqamingizni jo'nating",reply_markup=keyboard)
     print(user_data)
+     await ask_age(message)
 
+
+
+
+async def ask_age(message:types.Message):
+    user_id = message.from_user.id
+    if message.contact is not None:
+        phone = message.contact,phone_number
+    else:
+        phone=message.text
+    user_data[user_id]['phone'] = phone
+    await message.answer(f"Iltimos yoshingizni kiriting")
+    print(user_data)
